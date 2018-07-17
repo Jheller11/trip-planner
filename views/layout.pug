@@ -3,7 +3,15 @@ html
     title= title
         block head
   body
-    h1 Jeff's Page
-        nav: a(href="http://google.com") hello
+    h1 Trip Planner
+        nav   
+            a(href="/") Home
+            a(href="/trips") Trips
+        nav
+            a(href="/users/login") Log In
+            a(href="/users/signup") Sign Up
     main
         block content
+
+    footer
+        p Created by Jeff Heller
