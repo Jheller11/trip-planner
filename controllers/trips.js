@@ -15,7 +15,9 @@ router.get('/edit', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-  res.render('trips/index')
+  Trip.find({}).then(trips => {
+    res.render('trips/index', { trips: 'trips string' })
+  })
 })
 
 module.exports = router
