@@ -2,11 +2,10 @@ extends ../layout.pug
 
 
 block content
+    - trips = trips
+    p #{trips}
     p this is the index page on the trips controller
     a(href="/trips/edit") edit
     a(href="/trips/show") show
     a(href="/trips/new") new
 
-
-block script
-    - console.log(trips)
