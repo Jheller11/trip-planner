@@ -1,4 +1,12 @@
 extends ../layout.pug
 
 block content
+    - console.log(trip)
+
     p this is the show page on the trips controller
+    
+    if (trip.name === undefined)
+        p Please select a trip.
+    else
+        p #{trip.name}
+        

@@ -3,8 +3,6 @@ extends ../layout.pug
 
 block content
     - trips = trips
-    
-
     a(href="/trips/new") Create New Trip
     ol
         each trip in trips
@@ -12,5 +10,5 @@ block content
                 h4 #{trip.name}
                 p Created: #{trip.createdAt}
                 div 
-                    a(href="/trips/edit/#{trip.id}") Edit
-                    a(href="/trips/show/#{trip.id}") Details
+                    a(href="/trips/edit/"+ trip.id) Edit
+                    a(href="/trips/show/"+ trip.id) Details
