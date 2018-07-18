@@ -14,7 +14,7 @@ app.use('/trips', TripController)
 app.use('/users', UserController)
 
 app.get('/', (req, res) => {
-  res.render('home', { title: 'Jeff' })
+  res.render('home', { title: 'Trip Planner' })
 })
 app.set('port', process.env.PORT || 4000)
 
