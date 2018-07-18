@@ -12,8 +12,30 @@ router.get('/new', (req, res) => {
   res.render('trips/new')
 })
 
+router.post('/new', (req, res) => {
+  Trip.create({
+    name: req.body.name
+  }).then(trip => {
+    res.redirect(`/show/${trip.id}`)
+  })
+})
+
 router.get('/edit/:id', (req, res) => {
-  res.render('trips/edit')
+  Trip.findOne({ _id: req.params.id }).then(trip => {
+    res.render('trips/edit', { trip: trip })
+  })
+})
+
+router.patch('/edit/:id', (req, res) => {
+  Trip.findOneAndUpdate({ _id: req.params.id }, req.body).then(trip => {
+    res.redirect(`trips/show/${trip.id}`, { trip: trip })
+  })
+})
+
+router.delete('/:id', (req, res) => {
+  Trip.findOneAndRemove({ _id: req.params.id }).then(() => {
+    res.redirect('/')
+  })
 })
 
 router.get('/', (req, res) => {
