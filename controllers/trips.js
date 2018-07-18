@@ -16,7 +16,7 @@ router.post('/new', (req, res) => {
   Trip.create({
     name: req.body.name
   }).then(trip => {
-    res.redirect(`/show/${trip.id}`)
+    res.redirect(`/trips/show/${trip.id}`)
   })
 })
 

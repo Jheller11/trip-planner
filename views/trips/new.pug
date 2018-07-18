@@ -2,3 +2,9 @@ extends ../layout.pug
 
 block content
     p this is the new page on the trips controller
+
+
+    form(method="POST" action='/trips/new')
+        label(for="name") Trip Name:
+        input(type="text" placeholder="name your trip" name='name')
+        button(type="submit") Create Trip
