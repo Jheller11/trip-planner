@@ -3,9 +3,14 @@ extends ../layout.pug
 
 block content
     - trips = trips
-    p #{trips}
-    p this is the index page on the trips controller
-    a(href="/trips/edit") edit
-    a(href="/trips/show") show
-    a(href="/trips/new") new
+    
 
+    a(href="/trips/new") Create New Trip
+    ol
+        each trip in trips
+            li
+                h4 #{trip.name}
+                p Created: #{trip.createdAt}
+                div 
+                    a(href="/trips/edit/#{trip.id}") Edit
+                    a(href="/trips/show/#{trip.id}") Details

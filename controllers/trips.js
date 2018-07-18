@@ -16,7 +16,7 @@ router.get('/edit', (req, res) => {
 
 router.get('/', (req, res) => {
   Trip.find({}).then(trips => {
-    res.render('trips/index', { trips: 'trips string' })
+    res.render('trips/index', { trips: trips })
   })
 })
 
