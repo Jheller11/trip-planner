@@ -8,6 +8,24 @@ const trip = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now()
+  },
+  location: {
+    type: Object,
+    default: {
+      city: '',
+      latLng: ''
+    }
+  },
+  attending: {
+    type: Array,
+    default: []
+  },
+  accomadation: {
+    type: Object,
+    default: {
+      url: '',
+      price: 0
+    }
   }
 })
 

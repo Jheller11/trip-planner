@@ -7,4 +7,7 @@ block content
     form(method="POST" action='/trips/new')
         label(for="name") Trip Name:
         input(type="text" placeholder="name your trip" name='name')
+        label(for="city") Destination (City, ST):
+        input(type="text" placeholder="destination" name='city')
+        
         button(type="submit") Create Trip

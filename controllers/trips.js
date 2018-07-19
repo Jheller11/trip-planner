@@ -14,15 +14,14 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   Trip.create({
-    name: req.body.name
+    name: req.body.name,
+    location: { city: req.body.city }
   }).then(trip => {
     res.redirect(`/trips/show/${trip.id}`)
   })
 })
 
 router.put('/edit/:id', (req, res) => {
-  console.log('here')
-  console.log(req.body)
   Trip.findOneAndUpdate({ _id: req.params.id }, req.body).then(trip => {
     res.redirect(`/trips/show/${trip.id}`)
   })

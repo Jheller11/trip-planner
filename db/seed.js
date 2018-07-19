@@ -5,5 +5,7 @@ mongoose.Promise = Promise
 
 //seed db
 Trip.remove({}).then(() => {
-  Trip.insertMany(seeds)
+  Trip.insertMany(seeds).then(() => {
+    mongoose.connection.close()
+  })
 })
