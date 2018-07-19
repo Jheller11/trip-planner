@@ -9,4 +9,9 @@ block content
         p Please select a trip.
     else
         p #{trip.name}
+        p Destination: #{trip.location.city}
+        p Created: #{trip.createdAt}
+        a(href=`/trips/edit/${trip.id}`) Edit Trip
+
+    
         
