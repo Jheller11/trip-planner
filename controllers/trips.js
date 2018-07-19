@@ -20,21 +20,25 @@ router.post('/new', (req, res) => {
   })
 })
 
+// untested
+router.put('/edit/:id', (req, res) => {
+  console.log('here')
+  console.log(req.body)
+  Trip.findOneAndUpdate({ _id: req.params.id }, req.body).then(trip => {
+    res.redirect(`trips/show/${trip.id}`, { trip: trip })
+  })
+})
+// untested
 router.get('/edit/:id', (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
     res.render('trips/edit', { trip: trip })
   })
 })
 
-router.patch('/edit/:id', (req, res) => {
-  Trip.findOneAndUpdate({ _id: req.params.id }, req.body).then(trip => {
-    res.redirect(`trips/show/${trip.id}`, { trip: trip })
-  })
-})
-
+// untested
 router.delete('/:id', (req, res) => {
   Trip.findOneAndRemove({ _id: req.params.id }).then(() => {
-    res.redirect('/')
+    res.redirect('/trips')
   })
 })
 

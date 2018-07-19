@@ -2,3 +2,10 @@ extends ../layout.pug
 
 block content
     p this is the edit page on the trips controller
+
+    form(method="POST" action=`/trips/edit/${trip.id}?_method=PUT`)
+        label(for="name") Trip Name:
+        input(type="text" placeholder=`${trip.name}` name='name')
+        button(type="submit") Edit Trip
+
+        - console.log(trip.id)
