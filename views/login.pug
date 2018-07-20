@@ -1,1 +1,15 @@
 extends layout.pug
+
+block content
+
+
+    form(method="POST" action='/users/login')
+        label(for="email") Email:
+        input(type="text" placeholder="email" name='email')
+        br
+        label(for="password") Password:
+        input(type="text" placeholder="password" name='password')
+        br
+
+        br
+        button(type="submit") Log In

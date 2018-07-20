@@ -22,7 +22,6 @@ module.exports = passport => {
         passReqToCallback: true
       },
       (req, email, password, done) => {
-        console.log(req.body)
         process.nextTick(() => {
           User.findOne({ 'local.email': email }, (err, user) => {
             if (err) return done(err)
@@ -56,20 +55,28 @@ module.exports = passport => {
         passReqToCallback: true
       },
       (req, email, password, done) => {
+        console.log(email)
         User.findOne({ 'local.email': email }, (err, user) => {
-          if (err) return done(err)
-          if (!user)
+          if (err) {
+            console.log(err)
+            return done(err)
+          }
+          if (!user) {
+            console.log('user not found')
             return done(
               null,
               false,
               req.flash('loginMessage', 'User not found.')
             )
-          if (!user.validPassword(password))
+          }
+          if (!user.validPassword(password)) {
+            console.log('inval password')
             return done(
               null,
               false,
               req.flash('loginMessage', 'Password is not correct.')
             )
+          }
           return done(null, user)
         })
       }
