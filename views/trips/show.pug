@@ -1,17 +1,25 @@
 extends ../layout.pug
 
 block content
-    - console.log(trip)
-
     p this is the show page on the trips controller
     
     if (trip.name === undefined)
-        p Please select a trip.
+        p Please go back to select a trip.
     else
         p #{trip.name}
         p Destination: #{trip.location.city}
         p Created: #{trip.createdAt}
+        ul
+        each person, index in trip.attending
+            li= (index + 1) + ': ' + person
+        //- form for adding a person to the list + options to remove or edit a person
+        a(href=`${trip.accomadation.url}`) View Housing
+        p Total Cost of Rental: #{trip.accomadation.price}
+
+
         a(href=`/trips/edit/${trip.id}`) Edit Trip
+
+
 
     
         
