@@ -17,3 +17,7 @@
     4. MongoDB
     5. Bootstrap
     <!-- 6. Passport? --- Passport Local Mongoose? -->
+
+# Passport Help
+
+Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
