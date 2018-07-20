@@ -1,14 +1,3 @@
-# To do
-
-    1. Practice more with pug templating - in progress
-    2. Add style to pug html output
-    3. seed db - done
-    4. improve navigation - done
-    5. define routes - done for Trip Controller
-    6. add user authentication
-    7. redefine actual models  - in progress
-    8. deploy
-
 # Stuff used
 
     1. Pug (Jade)
@@ -21,3 +10,17 @@
 # Passport Help
 
 Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+
+Next = Configure passport login + expand user model
+
+# Tasks
+
+    * Finish user authentication/login procedure
+    * Link users to trips (require profile to create or join a trip)
+    * Expand trip model (more details)
+    * Style application
+    * Deploy application
+    * Add extras
+        1. Links to external resources (airbnb, yelp, kayak etc. for planning purposes)
+    * Trip Message Board
+    * Voting feature?
