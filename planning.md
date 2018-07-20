@@ -16,10 +16,4 @@
     3. Express
     4. MongoDB
     5. Bootstrap
-    <!-- 6. Passport? -->
-
-# Stuff for 7.20
-
-    1. Add passport
-    2. Add user sign up/sign in forms
-    3. Add logout button
+    <!-- 6. Passport? --- Passport Local Mongoose? -->

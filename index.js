@@ -3,6 +3,12 @@ const override = require('method-override')
 const parser = require('body-parser')
 const TripController = require('./controllers/trips')
 const UserController = require('./controllers/users')
+const passport = require('passport')
+const local = require('passport-local')
+
+// Passport
+
+// Passport
 
 app.use(parser.urlencoded({ extended: true }))
 app.use(override('_method'))
