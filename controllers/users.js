@@ -5,11 +5,11 @@ const passport = require('passport')
 require('../config/passport')(passport)
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login', { message: req.flash('loginMessage') })
 })
 
 router.get('/signup', (req, res) => {
-  res.render('signup')
+  res.render('signup', { message: req.flash('signupMessage') })
 })
 
 router.get('/profile', isLoggedIn, (req, res) => {
@@ -40,10 +40,7 @@ router.get('/logout', (req, res) => {
 })
 
 function isLoggedIn(req, res, next) {
-  // if user is authenticated in the session, carry on
   if (req.isAuthenticated()) return next()
-
-  // if they aren't redirect them to the home page
   res.redirect('/')
 }
 

@@ -26,6 +26,11 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 # Next Step
 
-    1. Add flash messages for signup/login errors.
-    2. Add error handling.
-    3. Figure out why "user not found" on login attempts.
+    1. Flash Messages
+    2. Message Board
+    3. User must be logged in to create a trip
+    4. User must be logged in to view trip
+    5. User must be logged in to edit trips
+
+    6. Trips made private (password protected)
+    7. Invite users to trips
