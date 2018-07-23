@@ -33,11 +33,16 @@ router.put('/edit/:id', (req, res) => {
 
 router.put('/:id', isLoggedIn, (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
-    trip.attending.push({
-      userid: req.user.id,
-      displayName: req.user.local.displayName
+    let match = trip.attending.find(person => {
+      return person.userid === req.user.id
     })
-    trip.save()
+    if (!match) {
+      trip.attending.push({
+        userid: req.user.id,
+        displayName: req.user.local.displayName
+      })
+      trip.save()
+    }
     res.redirect(`/trips/show/${trip.id}`)
   })
 })
