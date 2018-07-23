@@ -33,9 +33,9 @@ module.exports = passport => {
               )
             } else {
               var newUser = new User()
-              newUser.email = email
-              newUser.password = newUser.generateHash(password)
-              newUser.displayName = req.body.displayName
+              newUser.local.email = email
+              newUser.local.password = newUser.generateHash(password)
+              newUser.local.displayName = req.body.displayName
               console.log(newUser)
               newUser.save(err => {
                 if (err) throw err
@@ -69,7 +69,7 @@ module.exports = passport => {
               req.flash('loginMessage', 'User not found.')
             )
           }
-          if (!user.validPassword(password)) {
+          if (!user.validPassword(password, user)) {
             console.log('inval password')
             return done(
               null,

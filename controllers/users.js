@@ -12,7 +12,7 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile')
 })
 
@@ -33,5 +33,18 @@ router.post(
     failureFlash: true
   })
 )
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
+})
+
+function isLoggedIn(req, res, next) {
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated()) return next()
+
+  // if they aren't redirect them to the home page
+  res.redirect('/')
+}
 
 module.exports = router
