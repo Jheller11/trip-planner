@@ -1,17 +1,17 @@
 extends ../layout.pug
 
 block content
-    p this is the show page on the trips controller
     
     if (trip.name === undefined)
         p Please go back to select a trip.
     else
-        p #{trip.name}
+        h4 Trip Name: #{trip.name}
         p Destination: #{trip.location.city}
         p Created: #{trip.createdAt}
+        p Confirmed Attending:
         ul
         each person, index in trip.attending
-            li= (index + 1) + ': ' + person
+            li= (index + 1) + ': ' + person.displayName
         //- form for adding a person to the list + options to remove or edit a person
         a(href=`${trip.accomadation.url}`) View Housing
         p Total Cost of Rental: #{trip.accomadation.price}

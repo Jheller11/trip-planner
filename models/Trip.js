@@ -9,6 +9,10 @@ const trip = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
+  admin: {
+    userid: String,
+    displayName: String
+  },
   location: {
     type: Object,
     default: {

@@ -8,14 +8,18 @@ router.get('/show/:id', (req, res) => {
   })
 })
 
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
   res.render('trips/new')
 })
 
 router.post('/new', (req, res) => {
   Trip.create({
     name: req.body.name,
-    location: { city: req.body.city }
+    location: { city: req.body.city },
+    admin: { userid: req.user.id, displayName: req.user.local.displayName },
+    attending: [
+      { userid: req.user.id, displayName: req.user.local.displayName }
+    ]
   }).then(trip => {
     res.redirect(`/trips/show/${trip.id}`)
   })
@@ -44,5 +48,10 @@ router.get('/', (req, res) => {
     res.render('trips/index', { trips: trips })
   })
 })
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next()
+  res.redirect('/trips')
+}
 
 module.exports = router
