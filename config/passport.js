@@ -36,6 +36,7 @@ module.exports = passport => {
               newUser.email = email
               newUser.password = newUser.generateHash(password)
               newUser.displayName = req.body.displayName
+              console.log(newUser)
               newUser.save(err => {
                 if (err) throw err
                 return done(null, newUser)
@@ -55,7 +56,6 @@ module.exports = passport => {
         passReqToCallback: true
       },
       (req, email, password, done) => {
-        console.log(email)
         User.findOne({ 'local.email': email }, (err, user) => {
           if (err) {
             console.log(err)
