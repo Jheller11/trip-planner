@@ -8,5 +8,9 @@ block content
         input(type="text" placeholder="name your trip" name='name')
         label(for="city") Destination (City, ST):
         input(type="text" placeholder="destination" name='city')
+        label(for="passcode") Passcode*
+        input(type="password" name="passcode")
         
         button(type="submit") Create Trip
+
+    p *If a passcode is used, only users with the passcode will be able to join and view details of a trip.  You will have to provide users with the passcode when you invite them to join.
