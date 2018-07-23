@@ -10,12 +10,18 @@ block content
         p Created: #{trip.createdAt}
         p Confirmed Attending:
         ul
-        each person, index in trip.attending
-            li= (index + 1) + ': ' + person.displayName
+            each person, index in trip.attending
+                li= (index + 1) + ': ' + person.displayName
         //- form for adding a person to the list + options to remove or edit a person
+        form(method="POST" action=`/trips/${trip.id}?_method=PUT`)
+            button(type='submit') Join Trip 
         a(href=`${trip.accomadation.url}`) View Housing
         p Total Cost of Rental: #{trip.accomadation.price}
 
+        p Message Board
+        ul
+            each message, index in trip.messages
+                li= (index + 1) + ': ' + message
 
         a(href=`/trips/edit/${trip.id}`) Edit Trip
 

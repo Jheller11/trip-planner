@@ -14,7 +14,6 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 # Tasks
 
     * Link users to trips (require profile to create or join a trip)
-    * Expand trip model (more details)
     * Style application
         set up example: https://stackoverflow.com/questions/41051493/cant-get-css-in-node-express-pug-app
     * Deploy application
@@ -23,7 +22,6 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 # Next Step
 
-    2. Message Board
     3. User must be logged in to create a trip
     4. User must be logged in to view trip
     5. User must be logged in to edit trips

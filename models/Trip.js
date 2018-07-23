@@ -30,6 +30,12 @@ const trip = new mongoose.Schema({
       url: '',
       price: 0
     }
+  },
+  messages: {
+    type: Array,
+    default: [
+      'Welcome to your new trip!  Use this space to communicate with others'
+    ]
   }
 })
 
