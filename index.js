@@ -23,6 +23,12 @@ app.use(flash())
 app.set('views', './views')
 app.set('view engine', 'pug')
 
+// pass logged in user to all controllers/routes
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
 app.use('/trips', TripController)
 app.use('/users', UserController)
 

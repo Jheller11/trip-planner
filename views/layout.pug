@@ -8,9 +8,14 @@ html
         nav   
             a(href="/") Home
             a(href="/trips") Trips
-        nav
-            a(href="/users/login") Log In
-            a(href="/users/signup") Sign Up
+        if !user
+            nav
+                a(href="/users/login") Log In
+                a(href="/users/signup") Sign Up
+        if user
+            nav
+                a(href="/users/profile") Profile
+                a(href="/users/logout") Log Out
     main
         block content
     

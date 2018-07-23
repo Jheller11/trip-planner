@@ -1,7 +1,8 @@
 extends layout.pug
 
 block content
-    p {user.id}
-    p {user.password}
-    p {user.email}
+    p #{user.id}
+    p #{user.local.password}
+    p #{user.local.email}
+    p #{user.local.displayName}
 

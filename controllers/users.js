@@ -13,7 +13,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile')
+  res.render('profile', { user: req.user })
 })
 
 router.post(
