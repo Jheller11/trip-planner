@@ -3,12 +3,15 @@ extends ../layout.pug
 
 block content
     - trips = trips
-    a(href="/trips/new") Create New Trip
-    ol
+    .container.justify-content-center.d-flex
+        a.btn.btn-primary(href="/trips/new") Create New Trip
+    ul
         each trip in trips
             li
-                h4 #{trip.name}
+                div
+                    h4 #{trip.name}
+                    a.btn.btn-success(href="/trips/show/"+ trip.id) Details
+                    a.btn.btn-warning(href="/trips/edit/"+ trip.id) Edit
                 p Created: #{trip.createdAt}
-                div 
-                    a(href="/trips/edit/"+ trip.id) Edit
-                    a(href="/trips/show/"+ trip.id) Details
+
+
