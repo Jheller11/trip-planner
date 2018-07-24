@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser')
 const TripController = require('./controllers/trips')
 const UserController = require('./controllers/users')
 const passport = require('passport')
-const local = require('passport-local')
 const flash = require('connect-flash')
 const session = require('express-session')
 

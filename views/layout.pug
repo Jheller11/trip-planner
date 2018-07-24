@@ -4,28 +4,35 @@ html
     link(rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css")
     block head
   body
-    h1 Trip Planner
-        nav   
-            a(href="/") Home
-            a(href="/trips") Trips
-        if !user
-            nav
-                a(href="/users/login") Log In
-                a(href="/users/signup") Sign Up
-        if user
-            nav
-                a(href="/users/profile") Profile
-                a(href="/users/logout") Log Out
-    main
+    header
+        nav.navbar.navbar-expand-lg.navbar-light.bg-dark
+            a.navbar-brand.text-primary(href='/') Site Title
+            div.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item.active
+                        a.nav-link.text-white(href="/") Home
+                    li.nav-item.active
+                        a.nav-link.text-white(href="/trips") Trips
+                    if !user
+                        li.nav-item.active
+                            a.nav-link.text-white(href="/users/login") Log In
+                        li.nav-item.active
+                            a.nav-link.text-white(href="/users/signup") Sign Up
+                    if user
+                        li.nav-item.active
+                            a.nav-link.text-white(href="/users/profile") Profile
+                        li.nav-item.active
+                            a.nav-link.text-white(href="/users/logout") Log Out                
+                
+    main.container
         if (message && message.length > 0)
             div.container.alert-danger.alert #{message}
         block content
     
         
 
-    footer
-        p Created by Jeff Heller
-        a(href="#") Help
-        a(href="#") About
-        p Contact me: 
-            a(href="mailto:heller.jeffrey@gmail.com") heller.jeffrey@gmail.com
+    footer.bg-dark
+        .navbar.navbar-fixed-bottom
+            p.text-white Created by Jeff Heller
+            p.text-white Contact me: 
+                a.text-secondary(href="mailto:heller.jeffrey@gmail.com") heller.jeffrey@gmail.com
