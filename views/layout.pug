@@ -3,7 +3,7 @@ html
     title= title
     link(rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css")
     block head
-  body
+  body.d-flex.flex-column.justify-content-between
     header
         nav.navbar.navbar-expand-lg.navbar-light.bg-dark
             a.navbar-brand.text-primary(href='/') Site Title
@@ -24,14 +24,14 @@ html
                         li.nav-item.active
                             a.nav-link.text-white(href="/users/logout") Log Out                
                 
-    main.container
+    main.container.mt-3.mb-5
         if (message && message.length > 0)
             div.container.alert-danger.alert #{message}
         block content
     
         
 
-    footer.bg-dark.fixed-bottom
+    footer.bg-dark
         .navbar
             p.text-white Created by Jeff Heller
             p.text-white Contact me: 

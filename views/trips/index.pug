@@ -3,15 +3,22 @@ extends ../layout.pug
 
 block content
     - trips = trips
-    .container.justify-content-center.d-flex
-        a.btn.btn-primary(href="/trips/new") Create New Trip
-    ul
-        each trip in trips
-            li
-                div
-                    h4 #{trip.name}
-                    a.btn.btn-success(href="/trips/show/"+ trip.id) Details
-                    a.btn.btn-warning(href="/trips/edit/"+ trip.id) Edit
+    .container.justify-content-center.d-flex.align-items-center
+        if user
+            a.btn.btn-primary(href="/trips/new") Create New Trip
+        if !user
+            div
+                .alert.alert-warning Create an account or sign in to an existing account to create a new trip:
+                a.btn.btn-primary.mr-2(href="/users/login") Log In
+                a.btn.btn-primary(href='/users/signup') Create an Account
+
+    each trip in trips
+        .card.mt-3
+            .card-header #{trip.name}
+            .card-body
+                a.btn.btn-success.mr-2(href="/trips/show/"+ trip.id) Details
+                a.btn.btn-warning(href="/trips/edit/"+ trip.id) Edit
+                p Created By: #{trip.admin.displayName}
                 p Created: #{trip.createdAt}
 
 

@@ -1,15 +1,21 @@
 extends layout.pug
 
 block content
+    .container
+        .alert.alert-secondary Create an account below:
+        form(method="POST" action='/users/signup')
 
-    form(method="POST" action='/users/signup')
-        label(for="email") Email:
-        input(type="text" placeholder="email" name='email')
-        br
-        label(for="password") Password:
-        input(type="text" placeholder="password" name='password')
-        br
-        label(for="displayName") Display Name:
-        input(type='text' placeholder='how your name will appear' name="displayName")
-        br
-        button(type="submit") Sign Up!
+            .form-group
+                label(for="email") Email:
+                input.form-control(type="text" placeholder="email" name='email')
+            .form-group
+                label(for="password") Password:
+                input.form-control(type="text" placeholder="password" name='password')
+            .form-group
+                label(for="displayName") Display Name:
+                input.form-control(type='text' placeholder='how your name will appear' name="displayName")
+            
+            button.btn.btn-primary(type="submit") Sign Up!
+        
+        .alert.alert-warning Already have an account? Sign in here:
+        a.btn.btn-warning(href='/users/login') Sign In

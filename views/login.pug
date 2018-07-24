@@ -2,14 +2,16 @@ extends layout.pug
 
 block content
 
+    .container
+        .alert.alert-secondary Sign in to an existing account:
+        form(method="POST" action='/users/login')
+            div.form-group
+                label(for="email") Email:
+                input.form-control(type="text" placeholder="example@email.com" name='email')
+            div.form-group
+                label(for="password") Password:
+                input.form-control(type="password" placeholder="password" name='password')
+            button.btn.btn-primary(type="submit") Log In
 
-    form(method="POST" action='/users/login')
-        label(for="email") Email:
-        input(type="text" placeholder="email" name='email')
-        br
-        label(for="password") Password:
-        input(type="password" placeholder="password" name='password')
-        br
-
-        br
-        button(type="submit") Log In
+        .alert.alert-warning Don't have an account? Sign up here:
+        a.btn.btn-warning(href='/users/signup') Create Account
