@@ -17,7 +17,7 @@ html
                 a(href="/users/profile") Profile
                 a(href="/users/logout") Log Out
     main
-        if message.length > 0
+        if (message && message.length > 0)
             div.container.alert-danger.alert #{message}
         block content
     
