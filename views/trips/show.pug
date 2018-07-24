@@ -18,11 +18,6 @@ block content
         a(href=`${trip.accomadation.url}`) View Housing
         p Total Cost of Rental: #{trip.accomadation.price}
 
-        p Message Board
-        ul
-            each message, index in trip.messages
-                li= (index + 1) + ': ' + message
-
         a(href=`/trips/edit/${trip.id}`) Edit Trip
 
 

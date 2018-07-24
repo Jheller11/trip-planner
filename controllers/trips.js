@@ -70,4 +70,9 @@ function isLoggedIn(req, res, next) {
   res.redirect('/trips')
 }
 
+function isAdminUser(req, res, next) {
+  if (req.isAuthenticated() && req.user.id === admin.userid) return next()
+  req.flash('message')
+}
+
 module.exports = router

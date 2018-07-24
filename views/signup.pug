@@ -2,9 +2,6 @@ extends layout.pug
 
 block content
 
-    if message
-        div.alert-danger #{message}
-
     form(method="POST" action='/users/signup')
         label(for="email") Email:
         input(type="text" placeholder="email" name='email')
