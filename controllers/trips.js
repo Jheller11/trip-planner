@@ -49,7 +49,14 @@ router.put('/:id', isLoggedIn, (req, res) => {
 
 router.get('/edit/:id', (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
-    res.render('trips/edit', { trip: trip })
+    if (isAdminUser(req, trip)) {
+      res.render('trips/edit', { trip: trip })
+    } else {
+      res.render('trips/show', {
+        trip: trip,
+        message: 'You must have admin rights to edit the trip.'
+      })
+    }
   })
 })
 
@@ -70,9 +77,9 @@ function isLoggedIn(req, res, next) {
   res.redirect('/trips')
 }
 
-function isAdminUser(req, res, next) {
-  if (req.isAuthenticated() && req.user.id === admin.userid) return next()
-  req.flash('message')
+function isAdminUser(req, trip) {
+  if (req.isAuthenticated() && req.user.id === trip.admin.userid) return true
+  else return false
 }
 
 module.exports = router
