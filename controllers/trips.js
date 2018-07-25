@@ -2,17 +2,20 @@ const express = require('express')
 const router = express.Router()
 const Trip = require('../models/Trip')
 
+// show a single trip
 router.get('/show/:id', (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
     res.render('trips/show', { trip: trip })
   })
 })
 
+// show the form for creating a new trip (must be logged in)
 router.get('/new', isLoggedIn, (req, res) => {
   res.render('trips/new')
 })
 
 // handles a user search for specific trip + redirect directly to trip
+// if error (no matching trip) then redirect back to index with alert message
 router.post('/search', (req, res) => {
   Trip.findOne({ _id: req.body.input })
     .then(trip => {
@@ -31,6 +34,7 @@ router.post('/search', (req, res) => {
     })
 })
 
+// save a new trip to db/redirect to that trip page
 router.post('/new', (req, res) => {
   Trip.create({
     name: req.body.name,
@@ -57,12 +61,14 @@ router.post('/:id', isLoggedIn, (req, res) => {
   })
 })
 
+// edit trip
 router.put('/edit/:id', (req, res) => {
   Trip.findOneAndUpdate({ _id: req.params.id }, req.body).then(trip => {
     res.redirect(`/trips/show/${trip.id}`)
   })
 })
 
+// sign a user up attending a trip (requires login)
 router.put('/:id', isLoggedIn, (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
     let match = trip.attending.find(person => {
@@ -100,17 +106,20 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+// get all trips for index page
 router.get('/', (req, res) => {
   Trip.find({}).then(trips => {
     res.render('trips/index', { trips: trips })
   })
 })
 
+// verify current user exists
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next()
   res.redirect('/trips')
 }
 
+// verify user is admin for making changes
 function isAdminUser(req, trip) {
   if (req.isAuthenticated() && req.user.id === trip.admin.userid) return true
   else return false

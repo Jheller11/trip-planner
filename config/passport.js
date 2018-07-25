@@ -31,6 +31,16 @@ module.exports = passport => {
                 false,
                 req.flash('signupMessage', 'That email is already taken.')
               )
+            }
+            if (!email || !req.body.displayName || !password) {
+              return done(
+                null,
+                false,
+                req.flash(
+                  'signupMessage',
+                  'All fields are required. Please try again.'
+                )
+              )
             } else {
               var newUser = new User()
               newUser.local.email = email
