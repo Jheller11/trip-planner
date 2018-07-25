@@ -12,10 +12,23 @@ router.get('/new', isLoggedIn, (req, res) => {
   res.render('trips/new')
 })
 
+// handles a user search for specific trip + redirect directly to trip
 router.post('/search', (req, res) => {
-  Trip.findOne({ _id: req.body.input }).then(trip => {
-    res.redirect(`/trips/show/${trip.id}`)
-  })
+  Trip.findOne({ _id: req.body.input })
+    .then(trip => {
+      if (trip) {
+        res.redirect(`/trips/show/${trip.id}`)
+      }
+    })
+    .catch(err => {
+      Trip.find({}).then(trips => {
+        res.render('trips/index', {
+          trips: trips,
+          searchMessage:
+            'Sorry, no matching trip found.  Please double check ID number and try again.'
+        })
+      })
+    })
 })
 
 router.post('/new', (req, res) => {

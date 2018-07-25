@@ -35,7 +35,10 @@ block content
                     .form-group
                         label(for="input")
                         input.form-control(type='text' name='input' placeholder='enter trip id*')
+                    if (searchMessage)
+                        .alert-danger.alert #{searchMessage}
                     button.btn.btn-success(type='submit'  id='search') Search
+
                 p.text-muted *Users who have been invited to join a specific trip will have received the specific ID.  Enter the ID here to view your trip.
 
 
