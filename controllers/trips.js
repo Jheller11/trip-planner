@@ -25,6 +25,19 @@ router.post('/new', (req, res) => {
   })
 })
 
+// add a message
+router.post('/:id', (req, res) => {
+  Trip.findOne({ _id: req.params.id }).then(trip => {
+    trip.messages.push({
+      message: req.body.message,
+      category: req.body.category,
+      user: { userid: req.user.id, displayName: req.user.local.displayName }
+    })
+    trip.save()
+    res.redirect('/trips/' + req.params.id)
+  })
+})
+
 router.put('/edit/:id', (req, res) => {
   Trip.findOneAndUpdate({ _id: req.params.id }, req.body).then(trip => {
     res.redirect(`/trips/show/${trip.id}`)
@@ -47,6 +60,7 @@ router.put('/:id', isLoggedIn, (req, res) => {
   })
 })
 
+// route for controlling access to edit page (user must be marked as admin)
 router.get('/edit/:id', (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
     if (isAdminUser(req, trip)) {
@@ -60,6 +74,7 @@ router.get('/edit/:id', (req, res) => {
   })
 })
 
+// route for deleting a trip
 router.delete('/:id', (req, res) => {
   Trip.findOneAndRemove({ _id: req.params.id }).then(() => {
     res.redirect('/trips')

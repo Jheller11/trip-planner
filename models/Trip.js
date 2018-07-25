@@ -1,5 +1,18 @@
 const mongoose = require('../db/connection')
 
+const message = new mongoose.Schema({
+  message: String,
+  category: String,
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  user: {
+    userid: String,
+    displayName: String
+  }
+})
+
 const trip = new mongoose.Schema({
   name: {
     type: String,
@@ -30,7 +43,8 @@ const trip = new mongoose.Schema({
       url: '',
       price: 0
     }
-  }
+  },
+  messages: [message]
 })
 
 const Trip = mongoose.model('Trip', trip)

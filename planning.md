@@ -6,10 +6,14 @@
     4. MongoDB
     5. Bootstrap
     6. Passport
+    7. Mocha
+    8. Chai
 
-# Passport Help
+## Passport Help
 
 Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+
+## Testing Help
 
 # Tasks
 
@@ -23,5 +27,9 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 # Next Step
 
-    6. Trips made private (password protected)
+    6. Trips made private (password protected to join + most details blocked from view unless user is registered as attending)
     7. Invite users to trips
+    8. Attendees as regular or admin (boolean on new key "admin")
+    9. Expand trip edit functionality and style view
+    10. Style trip view page
+    11. Style user profile page + add list of trips + possible calendar

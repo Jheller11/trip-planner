@@ -15,6 +15,13 @@
     "accomadation": {
       "url": "",
       "price": 0
-    }
+    },
+    "messages": [
+      {
+        "message": "This works",
+        "category": "test",
+        "user": { "userid": "testuser", "displayName": "TestUserDisplay" }
+      }
+    ]
   }
 ]

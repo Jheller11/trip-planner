@@ -11,9 +11,9 @@ block content
                 .alert.alert-warning Create an account or sign in to an existing account to create a new trip:
                 a.btn.btn-primary.mr-2(href="/users/login") Log In
                 a.btn.btn-primary(href='/users/signup') Create an Account
-
+    p Trips:
     each trip in trips
-        .card.mt-3
+        .card.mt-3.w-50
             .card-header #{trip.name}
             .card-body
                 a.btn.btn-success.mr-2(href="/trips/show/"+ trip.id) Details
