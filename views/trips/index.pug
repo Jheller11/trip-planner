@@ -2,20 +2,16 @@ extends ../layout.pug
 
 
 block content
-    .container.justify-content-center.d-flex.align-items-center.w-50
-        if user
-            a.btn.btn-primary(href="/trips/new") Create New Trip
-        if !user
-            div
-                .alert.alert-warning Create an account or sign in to an existing account to create a new trip:
-                a.btn.btn-primary.mr-2(href="/users/login") Log In
-                a.btn.btn-primary(href='/users/signup') Create an Account
+    .container.justify-content-center.d-flex.align-items-center.border-light.border-bottom.p-3
+        
     .container.mt-5
         .row
-            .col.border-light.border-right.p-3 Trips:
+            .col.border-light.border-right.p-3 
+                h5 Trips:
                 each trip in trips
                     .card.mt-3
-                         .card-header.d-flex.justify-content-between #{trip.name}
+                         .card-header.d-flex.justify-content-between 
+                            a.text-dark(href="/trips/show/"+ trip.id) #{trip.name}
                             span.text-primary creator
                          .card-body
                             - let d = trip.createdAt
@@ -25,10 +21,20 @@ block content
                             - let date = `${month}/${day}/${year}`
                             p.text-info Created: #{date}
                             a.btn.btn-success.mr-2(href="/trips/show/"+ trip.id) Open
-            .col.p-3 Search:
-                .mt-3
+            .col.p-3
+                h5.mb-3 Create Trip:
+                if user
+                    a.btn.btn-primary(href="/trips/new") Create New Trip
+                if !user
+                    div
+                        .alert.alert-warning Create an account or sign in to an existing account to create a new trip:
+                        a.btn.btn-primary.mr-2(href="/users/login") Log In
+                        a.btn.btn-primary(href='/users/signup') Create an Account
+                h5.mt-3 Search:
+                form.mt-3(method="POST" action='/trips/search')
                     .form-group
-                        input.form-control(type='text' id='input' placeholder='enter trip id*')
+                        label(for="input")
+                        input.form-control(type='text' name='input' placeholder='enter trip id*')
                     button.btn.btn-success(type='submit'  id='search') Search
                 p.text-muted *Users who have been invited to join a specific trip will have received the specific ID.  Enter the ID here to view your trip.
 

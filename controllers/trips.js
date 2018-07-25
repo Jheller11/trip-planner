@@ -12,6 +12,12 @@ router.get('/new', isLoggedIn, (req, res) => {
   res.render('trips/new')
 })
 
+router.post('/search', (req, res) => {
+  Trip.findOne({ _id: req.body.input }).then(trip => {
+    res.redirect(`/trips/show/${trip.id}`)
+  })
+})
+
 router.post('/new', (req, res) => {
   Trip.create({
     name: req.body.name,
