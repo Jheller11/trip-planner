@@ -25,6 +25,7 @@ app.set('view engine', 'pug')
 // pass logged in user to all controllers/routes
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.title = 'Site Title'
   next()
 })
 
@@ -32,7 +33,7 @@ app.use('/trips', TripController)
 app.use('/users', UserController)
 
 app.get('/', (req, res) => {
-  res.render('home', { title: 'Trip Planner' })
+  res.render('home')
 })
 app.set('port', process.env.PORT || 4000)
 

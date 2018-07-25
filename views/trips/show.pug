@@ -23,10 +23,22 @@ block content
         .container
             h4 Message Board
             each message in trip.messages
-                p= message.message
-                p= message.createdAt
-                p= message.category
-                p= message.user.displayName
+                .card
+                    p= message.message
+                    p= message.createdAt
+                    p= message.category
+                    p= message.user.displayName
+            
+            form(method="POST" action=`/trips/${trip.id}`)
+                label(for="message") Message:
+                input(type="text" placeholder='...' name="message")
+                label(for="category") Category:
+                select(for="category" name='category')
+                    option(value="hotel") Hotel
+                    option(value="activities") Activities
+                    option(value="travel") Travel
+                    option(value="other") Other
+                button(type="submit") Post
 
 
 

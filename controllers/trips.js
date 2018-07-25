@@ -26,7 +26,7 @@ router.post('/new', (req, res) => {
 })
 
 // add a message
-router.post('/:id', (req, res) => {
+router.post('/:id', isLoggedIn, (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
     trip.messages.push({
       message: req.body.message,
@@ -34,7 +34,7 @@ router.post('/:id', (req, res) => {
       user: { userid: req.user.id, displayName: req.user.local.displayName }
     })
     trip.save()
-    res.redirect('/trips/' + req.params.id)
+    res.redirect('/trips/show/' + trip.id)
   })
 })
 
