@@ -24,10 +24,19 @@ block content
             h4 Message Board
             each message in trip.messages
                 .card
-                    p= message.message
-                    p= message.createdAt
-                    p= message.category
-                    p= message.user.displayName
+                    - let d = message.createdAt
+                    - let day = d.getDate()
+                    -let month = d.getMonth() + 1
+                    - let year = d.getFullYear()
+                    - let date = `${month}/${day}/${year}`
+                    p 
+                        span #{message.user.displayName} 
+                        span on 
+                        span #{date}
+                        span : 
+                        span "#{message.message}"
+                    span Category: #{message.category}
+
             
             form(method="POST" action=`/trips/${trip.id}`)
                 label(for="message") Message:

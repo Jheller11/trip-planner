@@ -16,7 +16,8 @@ const message = new mongoose.Schema({
 const trip = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   createdAt: {
     type: Date,
