@@ -31,7 +31,7 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 - [ ] Info Security
 
-  - [ ] require passcode to join trip
+  - [x] require passcode to join trip (7/26)
   - [ ] restrict trip details to only attendees
   - [ ] make entire trip private from index?
 
@@ -41,7 +41,7 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
   - [x] Single Trip View (7/26)
   - [ ] Trip Edit
-  - [ ] Profile Page
+  - [x] Profile Page (7/26)
   - [ ] Message Board
 
 - [ ] Content

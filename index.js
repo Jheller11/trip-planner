@@ -1,4 +1,5 @@
-const app = require('express')()
+const express = require('express')
+const app = express()
 const override = require('method-override')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -11,6 +12,9 @@ const session = require('express-session')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(override('_method'))
 app.use(cookieParser())
+
+// serve static files
+app.use(express.static('public'))
 
 // Passport
 app.use(session({ secret: 'liverpool' }))

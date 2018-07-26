@@ -1,8 +1,30 @@
 extends layout.pug
 
 block content
-    p #{user.id}
-    p #{user.local.password}
-    p #{user.local.email}
-    p #{user.local.displayName}
+    .container
+        .row
+            .col.p-3
+                h5.mb-3 User Profile:
 
+
+
+
+            .col.p-3
+                h5.mb-3 Create Trip:
+                if user
+                    a.btn.btn-primary(href="/trips/new") Create New Trip
+                if !user
+                    div
+                        .alert.alert-warning Create an account or sign in to create a new trip:
+                        a.btn.btn-primary.mr-2(href="/users/login") Log In
+                        a.btn.btn-primary(href='/users/signup') Create an Account
+                h5.mt-3 Join a Trip:
+                form.mt-3(method="POST" action='/trips/search')
+                    .form-group
+                        label(for="input")
+                        input.form-control(type='text' name='input' placeholder='enter trip id*')
+                    if (searchMessage)
+                        .alert-danger.alert #{searchMessage}
+                    button.btn.btn-success(type='submit'  id='search') Search
+
+                p.text-muted *Users who have been invited to join a specific trip will have received the specific ID.  Enter the ID here to view your trip.
