@@ -45,7 +45,11 @@ const trip = new mongoose.Schema({
       price: 0
     }
   },
-  messages: [message]
+  messages: [message],
+  passcode: {
+    type: String,
+    required: true
+  }
 })
 
 const Trip = mongoose.model('Trip', trip)

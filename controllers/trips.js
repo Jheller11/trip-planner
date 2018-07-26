@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Trip = require('../models/Trip')
+const bcrypt = require('bcrypt-nodejs')
 
 // show a single trip
 router.get('/show/:id', (req, res) => {
@@ -42,7 +43,8 @@ router.post('/new', (req, res) => {
     admin: { userid: req.user.id, displayName: req.user.local.displayName },
     attending: [
       { userid: req.user.id, displayName: req.user.local.displayName }
-    ]
+    ],
+    passcode: bcrypt.hashSync(req.body.passcode)
   }).then(trip => {
     res.redirect(`/trips/show/${trip.id}`)
   })
