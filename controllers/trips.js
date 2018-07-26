@@ -70,20 +70,27 @@ router.put('/edit/:id', (req, res) => {
   })
 })
 
-// sign a user up attending a trip (requires login)
+// sign a user up attending a trip (requires login and correct passcode)
 router.put('/:id', isLoggedIn, (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
-    let match = trip.attending.find(person => {
-      return person.userid === req.user.id
-    })
-    if (!match) {
-      trip.attending.push({
-        userid: req.user.id,
-        displayName: req.user.local.displayName
+    if (bcrypt.compareSync(req.body.passcode, trip.passcode)) {
+      let match = trip.attending.find(person => {
+        return person.userid === req.user.id
       })
-      trip.save()
+      if (!match) {
+        trip.attending.push({
+          userid: req.user.id,
+          displayName: req.user.local.displayName
+        })
+        trip.save()
+      }
+      res.redirect(`/trips/show/${trip.id}`)
+    } else {
+      res.render('trips/show', {
+        trip: trip,
+        message: 'Passcode not correct.  Please Try Again'
+      })
     }
-    res.redirect(`/trips/show/${trip.id}`)
   })
 })
 
