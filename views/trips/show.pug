@@ -2,7 +2,7 @@ extends ../layout.pug
 
 block content
     .container
-        .jumbotron.jumbotron-fluid.bg-primary
+        .jumbotron.bg-primary
             .container
                 if (trip.name === undefined)
                     p Please go back to select a trip.
@@ -16,12 +16,15 @@ block content
                     - let yearTrip = dTrip.getFullYear()
                     - let dateTrip = `${monthTrip}/${dayTrip}/${yearTrip}`
                     p Created: #{dateTrip}
-                    a.btn.btn-secondary(href=`/trips/edit/${trip.id}`) Edit Trip
+                    a.btn.btn-dark(href=`/trips/edit/${trip.id}`) Edit Trip
         .row
             .col
                 .card
-                    div.justify-content-center.d-flex        
-                        h4.p-3 Attendees
+                    div.justify-content-center.d-flex.bg-secondary        
+                        h4.p-1.text-white Attendees
+                    div.justify-content-center.d-flex
+                        button.my-1.btn-primary.btn Invite People
+                    p.p-1 Confirmed:
                     ul.list-group.list-group-flush
                         each person, index in trip.attending
                             li.list-group-item= (index + 1) + ': ' + person.displayName
@@ -33,10 +36,11 @@ block content
                     p.text-secondary *A code is required to join a trip. Contact the trip admin to request a code.
             .col
                 .card
-                    div.justify-content-center.d-flex        
-                        h4.p-3 Housing
+                    div.justify-content-center.d-flex.bg-secondary        
+                        h4.p-1.text-white Housing
                     if (trip.accomadation.url.length == 0)
-                        a.btn.btn-primary(href=`/trips/edit/${trip.id}`) Add Housing Info
+                        div.justify-content-center.d-flex
+                            a.my-1.btn.btn-primary(href=`/trips/edit/${trip.id}`) Add Housing Info
                         p.p-1 Find a rental:
                         ul.list-group.list-group-flush
                             li.list-group-item
@@ -52,8 +56,17 @@ block content
                         p Total Cost of Rental: #{trip.accomadation.price} 
 
 
-    .container
-        h4 Message Board
+    .container.mt-3
+        div.d-flex.justify-content-center.bg-secondary
+            h4.p-1.text-white Message Board
+        label(for='category') Filter:
+        select(for='category')
+            option(value='All') All
+            option(value="hotel") Hotel
+            option(value="activities") Activities
+            option(value="travel") Travel
+            option(value="other") Other
+        
         each message in trip.messages
             .card
                 - let d = message.createdAt
