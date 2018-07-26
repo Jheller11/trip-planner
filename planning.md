@@ -17,29 +17,29 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 # Tasks (updated 7/25)
 
-    * Deploy application
-    * Trip Message Board
+    - [ ] Deploy application
+    - [ ] Trip Message Board
         - [ ] style
         - [ ] filter by category
         - [ ] edit/delete?
         - [ ] like? (or upvote/downvote)
-    * Add Map
+    - [ ] Add Map
         - [ ] google api for latlng
         - [ ] add to view
         - [ ] search feature within map?
-    * Info Security
+    - [ ] Info Security
         - [ ] require passcode to join trip
         - [ ] restrict trip details to only attendees
         - [ ] make entire trip private from index?
-    * Easy Invite to trip?
-    * Style
+    - [ ] Easy Invite to trip?
+    - [ ] Style
         - [x] Single Trip View
         - [ ] Trip Edit
         - [ ] Profile Page
-    * Content
+    - [ ] Content
         - [ ] Trip Edit
         - [ ] Home
-    * Testing
+    - [ ] Testing
         - [ ] Trip Controller
         - [ ] User Controller/Passport
-    * Features/Bugs
+    - [ ] Features/Bugs
