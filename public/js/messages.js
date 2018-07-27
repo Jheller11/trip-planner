@@ -7,20 +7,28 @@ selector.addEventListener('change', e => {
   console.log(messages)
   let filter = e.target.value
   console.log(filter)
-  if (filter === 'All') {
+  if (filter === 'all') {
     while (view.firstChild) {
       view.firstChild.removeChild(view.firstChild)
     }
-    console.log('here')
     messages.forEach(message => {
       let newMessage = document.createElement('div')
       view.appendChild(newMessage)
-      newMessage.classList = 'message'
-      newMessage.innerHTML = `<div class='card'>${message.innerHTML}</div>`
+      newMessage.classList = 'card'
+      newMessage.innerHTML = `<div class='message'>${message.innerHTML}</div>`
     })
   } else {
     while (view.firstChild) {
       view.removeChild(view.firstChild)
     }
+    messages.forEach(message => {
+      console.log(filter, message)
+      if (message.id == filter) {
+        let newMessage = document.createElement('div')
+        view.appendChild(newMessage)
+        newMessage.classList = 'card'
+        newMessage.innerHTML = `<div class='message'>${message.innerHTML}</div>`
+      }
+    })
   }
 })

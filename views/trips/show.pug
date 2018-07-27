@@ -61,7 +61,7 @@ block content
             h4.p-1.text-white Message Board
         label(for='category') Filter:
         select(for='category')
-            option(value='All') All
+            option(value='all') All
             option(value="hotel") Hotel
             option(value="activities") Activities
             option(value="travel") Travel
@@ -74,7 +74,7 @@ block content
                     - let month = d.getMonth() + 1
                     - let year = d.getFullYear()
                     - let date = `${month}/${day}/${year}`
-                    div.message(name=`${message.category}`)
+                    div.message(id=`${message.category}`)
                         span #{message.user.displayName} 
                         span on 
                         span #{date}

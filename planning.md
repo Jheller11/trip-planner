@@ -19,7 +19,7 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 - [ ] Trip Message Board
 
-  - [ ] filter by category
+  - [x] filter by category (7/27)
   - [ ] edit/delete?
   - [ ] like? (or upvote/downvote)
 
