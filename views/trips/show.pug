@@ -66,21 +66,21 @@ block content
             option(value="activities") Activities
             option(value="travel") Travel
             option(value="other") Other
-        
-        each message in trip.messages
-            .card
-                - let d = message.createdAt
-                - let day = d.getDate()
-                -let month = d.getMonth() + 1
-                - let year = d.getFullYear()
-                - let date = `${month}/${day}/${year}`
-                div 
-                    span #{message.user.displayName} 
-                    span on 
-                    span #{date}
-                    span : 
-                    span "#{message.message}"
-                    span Category: #{message.category}  
+        #message-view
+            each message in trip.messages
+                .card
+                    - let d = message.createdAt
+                    - let day = d.getDate()
+                    - let month = d.getMonth() + 1
+                    - let year = d.getFullYear()
+                    - let date = `${month}/${day}/${year}`
+                    div.message(name=`${message.category}`)
+                        span #{message.user.displayName} 
+                        span on 
+                        span #{date}
+                        span : 
+                        span "#{message.message}"
+                        span Category: #{message.category}  
         form(method="POST" action=`/trips/${trip.id}`)
             label(for="message") Message:
             input(type="text" placeholder='...' name="message")
@@ -91,6 +91,8 @@ block content
                 option(value="travel") Travel
                 option(value="other") Other
             button.btn.btn-info.ml-3(type="submit") Post
+    script(src="/js/map.js")
+    script(src="/js/messages.js")
 
 
 
