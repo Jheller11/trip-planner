@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/User')
 const passport = require('passport')
 require('../config/passport')(passport)
+const Trip = require('../models/Trip')
 
 router.get('/login', (req, res) => {
   res.render('login', { message: req.flash('loginMessage') })
@@ -12,8 +13,22 @@ router.get('/signup', (req, res) => {
   res.render('signup', { message: req.flash('signupMessage') })
 })
 
+// show user profile with "my trips" list of registered attending trips
 router.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile', { user: req.user })
+  let myTrips = []
+  Trip.find({})
+    .then(trips => {
+      trips.forEach(trip => {
+        trip.attending.forEach(attendee => {
+          if (attendee.userid === req.user.id) {
+            myTrips.push(trip)
+          }
+        })
+      })
+    })
+    .then(() => {
+      res.render('profile', { myTrips: myTrips })
+    })
 })
 
 router.post(
