@@ -1,5 +1,10 @@
 extends ../layout.pug
 
+block head
+    style(type='text/css').
+       #map {
+            height: 400px;
+            }
 block content
     .container
         .jumbotron.bg-primary
@@ -102,11 +107,15 @@ block content
                 option(value="travel") Travel
                 option(value="other") Other
             button.btn.btn-info.ml-3(type="submit") Post
-        //- activities view
-        .container.mt-3
-            h4 Activities
+    //- activities view
+    .container.mt-3
+        h4 Activities
+    .container.mt-3
+        h4 Map
+        div#map map will go here
     script(src="/js/map.js")
     script(src="/js/messages.js")
+    script(src="https://maps.googleapis.com/maps/api/js?callback=myMap")
 
 
 

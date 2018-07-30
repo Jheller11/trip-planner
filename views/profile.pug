@@ -2,21 +2,28 @@ extends layout.pug
 
 block content
     .container
+        img(src="/images/profile-80px.png", alt="profile", srcset="")
+        h5.mb-3 #{user.local.displayName}
+        div
+            p #{user.local.email}
         .row
             .col.p-3
-                img(src="/images/profile-80px.png", alt="profile", srcset="")
-                h5.mb-3 #{user.local.displayName}
-                div
-                    p #{user.local.email}
+
                 
                 h5 My Trips
                 each trip in myTrips
-                    h1 trip here!
-                
-
-
-
-
+                    .card.mt-3
+                         .card-header.d-flex.justify-content-between 
+                            a.text-dark(href="/trips/show/"+ trip.id) #{trip.name}
+                            span.text-primary creator
+                         .card-body
+                            - let d = trip.createdAt
+                            - let day = d.getDate()
+                            - let month = d.getMonth() + 1
+                            - let year = d.getFullYear()
+                            - let date = `${month}/${day}/${year}`
+                            p.text-info Created: #{date}
+                            a.btn.btn-success.mr-2(href="/trips/show/"+ trip.id) Open
             .col.p-3
                 h5.mb-3 Create Trip:
                 if user
