@@ -55,7 +55,7 @@ block content
                         a.btn.btn-primary(href=`${trip.accomadation.url}`) View Housing
                         p Total Cost of Rental: #{trip.accomadation.price} 
 
-
+    //- message board 
     .container.mt-3
         div.d-flex.justify-content-center.bg-secondary
             h4.p-1.text-white Message Board
@@ -67,23 +67,34 @@ block content
             option(value="travel") Travel
             option(value="other") Other
         #message-view
-            each message in trip.messages
+            if trip.messages.length > 0
+                each message in trip.messages
+                    .card
+                        - let d = message.createdAt
+                        - let day = d.getDate()
+                        - let month = d.getMonth() + 1
+                        - let year = d.getFullYear()
+                        - let date = `${month}/${day}/${year}`
+                        div.message(id=`${message.category}`)
+                            span #{message.user.displayName} 
+                            span on 
+                            span #{date}
+                            span : 
+                            span "#{message.message}"
+                            span Category: #{message.category}
+                            p
+                                button.btn
+                                    img(src="/images/like-16px.png", alt="like")
+                                    span #{message.likes} 
+                                img(src="/images/edit-16px.png", alt="edit")
+                                img(src="/images/delete-16px.png", alt="delete")
+            else
                 .card
-                    - let d = message.createdAt
-                    - let day = d.getDate()
-                    - let month = d.getMonth() + 1
-                    - let year = d.getFullYear()
-                    - let date = `${month}/${day}/${year}`
-                    div.message(id=`${message.category}`)
-                        span #{message.user.displayName} 
-                        span on 
-                        span #{date}
-                        span : 
-                        span "#{message.message}"
-                        span Category: #{message.category}  
+                    p.ml-2 Start the conversation!  Add a message below!
         form(method="POST" action=`/trips/${trip.id}`)
-            label(for="message") Message:
-            input(type="text" placeholder='...' name="message")
+            .form-group
+                label(for="message") Message:
+                input.form-control(type="text" placeholder='...' name="message")
             label(for="category") Category:
             select(for="category" name='category')
                 option(value="hotel") Hotel
@@ -91,6 +102,9 @@ block content
                 option(value="travel") Travel
                 option(value="other") Other
             button.btn.btn-info.ml-3(type="submit") Post
+        //- activities view
+        .container.mt-3
+            h4 Activities
     script(src="/js/map.js")
     script(src="/js/messages.js")
 

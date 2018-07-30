@@ -4,7 +4,14 @@ block content
     .container
         .row
             .col.p-3
-                h5.mb-3 User Profile:
+                img(src="/images/profile-80px.png", alt="profile", srcset="")
+                h5.mb-3 #{user.local.displayName}
+                div
+                    p #{user.local.email}
+                
+                h5 My Trips
+                    //- add trips here
+                
 
 
 

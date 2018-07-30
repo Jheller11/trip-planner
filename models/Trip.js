@@ -10,6 +10,9 @@ const message = new mongoose.Schema({
   user: {
     userid: String,
     displayName: String
+  },
+  likes: {
+    type: Number
   }
 })
 
