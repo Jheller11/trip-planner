@@ -50,6 +50,7 @@ router.post('/new', (req, res) => {
   })
 })
 
+// "like" a message
 router.post('/messages/:id', isLoggedIn, (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
     let target = trip.messages.findIndex(message => {

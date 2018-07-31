@@ -17,10 +17,10 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 
 # Tasks (updated 7/25)
 
-- [ ] Trip Message Board
+- [x] Trip Message Board
 
   - [x] filter by category (7/27)
-  - [ ] like? (or upvote/downvote)
+  - [x] like? (or upvote/downvote) (7/31)
 
 - [ ] Add Map
 
@@ -54,6 +54,9 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
   - [ ] Trip Controller
   - [ ] User Controller/Passport
 
-- [ ] Features/Bugs
-
 - [ ] Deploy application
+
+## For Future Releases
+
+- [ ] Activities Section of Trip View
+- [ ] Restyle Trip View per Wireframe

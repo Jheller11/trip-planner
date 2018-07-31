@@ -4,8 +4,18 @@ block content
 
     h3 Edit Trip
     form(method="POST" action=`/trips/edit/${trip.id}?_method=PUT`)
-        label(for="name") Trip Name:
-        input(type="text" placeholder=`${trip.name}` name='name')
+        .form-group
+            label(for="name") Trip Name:
+            input.form-control(type="text" value=`${trip.name}` name='name')
+        .form-group
+            label(for="location.city") City, ST:
+            input.form-control(type="text" value=`${trip.location.city}` name='location.city')
+        .form-group
+            label(for="location.latLng") Lattitude/Longitude:
+            input.form-control(type="text" value=`${trip.location.latLng}` name='location.latLng')
+        //- .form-group
+        //-     label(for="name") Trip Name:
+        //-     input.form-control(type="text" value=`${trip.name}` name='name')
         button(type="submit") Edit Trip
 
     h3 Delete Trip
