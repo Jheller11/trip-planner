@@ -50,6 +50,16 @@ router.post('/new', (req, res) => {
   })
 })
 
+// edit a passcode
+router.put('/passcode/:id', (req, res) => {
+  Trip.findOne({ _id: req.params.id }).then(trip => {
+    let newCode = bcrypt.hashSync(req.body.passcode)
+    trip.passcode = newCode
+    trip.save()
+    res.redirect(`/trips/show/${trip.id}`)
+  })
+})
+
 // "like" a message
 router.post('/messages/:id', isLoggedIn, (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
