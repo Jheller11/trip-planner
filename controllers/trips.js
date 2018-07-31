@@ -53,9 +53,11 @@ router.post('/new', (req, res) => {
 // edit a passcode
 router.put('/passcode/:id', (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
-    let newCode = bcrypt.hashSync(req.body.passcode)
-    trip.passcode = newCode
-    trip.save()
+    if (isAdminUser(req, trip)) {
+      let newCode = bcrypt.hashSync(req.body.passcode)
+      trip.passcode = newCode
+      trip.save()
+    }
     res.redirect(`/trips/show/${trip.id}`)
   })
 })
@@ -66,7 +68,7 @@ router.post('/messages/:id', isLoggedIn, (req, res) => {
     let target = trip.messages.findIndex(message => {
       return (message.id = req.body.message)
     })
-    trip.messages[0].likes += 1
+    trip.messages[target].likes += 1
     trip.save()
     res.redirect(`/trips/show/${trip.id}`)
   })
