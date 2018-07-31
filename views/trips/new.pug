@@ -1,19 +1,20 @@
 extends ../layout.pug
 
 block content
-    .alert.alert-secondary Create a trip here and add additional details on the next screen.
+    .alert.alert-secondary Fill out the form below to create a trip.  You will be able to add additional details later.
     .container
         form(method="POST" action='/trips/new')
             .form-group
-                label(for="name") Trip Name:
+                label(for="name") Trip Name*:
                 input.form-control(type="text" placeholder="name your trip" name='name')
             .form-group
-                label(for="city") Destination (City, ST):
+                label(for="city") Destination (City, ST)*:
                 input.form-control(type="text" placeholder="destination" name='city')
             .form-group
-                label(for="passcode") Passcode*
+                label(for="passcode") Passcode**:
                 input.form-control(type="password" name="passcode")
-        
+  
             button.btn.btn-primary(type="submit") Create Trip
 
-    .alert.alert-light *If a passcode is used, only users with the passcode will be able to join and view details of a trip.  You will have to provide users with the passcode when you invite them to join.
+    .alert.alert-light * Required
+        p ** Your passcode will be required for any users to join your trip.  If you forget the passcode or need to change it, click Edit Trip at any time to reset it.

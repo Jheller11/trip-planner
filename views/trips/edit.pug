@@ -2,7 +2,8 @@ extends ../layout.pug
 
 block content
 
-    h3 Edit Trip
+    //- edit trip details
+    h4 Edit Trip
     form(method="POST" action=`/trips/edit/${trip.id}?_method=PUT`)
         .form-group
             label(for="name") Trip Name:
@@ -17,7 +18,17 @@ block content
         //-     label(for="name") Trip Name:
         //-     input.form-control(type="text" value=`${trip.name}` name='name')
         button(type="submit") Edit Trip
+    //- edit trip passcode
+    h4 Passcode Reset
+    form(method='POST' action=`/trips/passcode/${trip.id}?_method=PUT`)
+        .form-group
+            label(for="passcode") Passcode:
+            input.form-control(type='password' name='passcode')
+        button(type="submit") Set New Code
 
-    h3 Delete Trip
+    //- delete trip completely
+    h4 Delete Trip
     form(method="POST" action=`/trips/${trip.id}?_method=DELETE`)
         button(type="submit") Delete Trip
+
+    

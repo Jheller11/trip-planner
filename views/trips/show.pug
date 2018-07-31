@@ -21,6 +21,7 @@ block content
                     - let yearTrip = dTrip.getFullYear()
                     - let dateTrip = `${monthTrip}/${dayTrip}/${yearTrip}`
                     p Created: #{dateTrip}
+                    p Trip ID: #{trip.id}
                     a.btn.btn-dark(href=`/trips/edit/${trip.id}`) Edit Trip
         .row
             .col
@@ -101,7 +102,7 @@ block content
                     p.ml-2 Start the conversation!  Add a message below!
         form(method="POST" action=`/trips/${trip.id}`)
             .form-group
-                label(for="message") Message:
+                label(for="message") Add a Message:
                 input.form-control(type="text" placeholder='...' name="message")
             label(for="category") Category:
             select(for="category" name='category')
@@ -114,12 +115,12 @@ block content
     .container.mt-3
         h4 Activities
         p COMING SOON
-    .container.mt-3
-        h4 Map
-        div#map map will go here
-    script(src="/js/map.js")
+    //- .container.mt-3
+    //-     h4 Map
+    //-     div#map map will go here
+    //- script(src="/js/map.js")
     script(src="/js/messages.js")
-    script(src="https://maps.googleapis.com/maps/api/js?callback=myMap")
+    //- script(src="https://maps.googleapis.com/maps/api/js?callback=myMap")
 
 
 

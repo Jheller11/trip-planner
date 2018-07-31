@@ -29,7 +29,7 @@ app.set('view engine', 'pug')
 // pass logged in user to all controllers/routes
 app.use((req, res, next) => {
   res.locals.user = req.user
-  res.locals.title = 'Trip App'
+  res.locals.title = 'Trip Planner'
   next()
 })
 
