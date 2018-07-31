@@ -12,7 +12,8 @@ const message = new mongoose.Schema({
     displayName: String
   },
   likes: {
-    type: Number
+    type: Number,
+    default: 0
   }
 })
 

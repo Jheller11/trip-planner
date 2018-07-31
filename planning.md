@@ -20,13 +20,12 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 - [ ] Trip Message Board
 
   - [x] filter by category (7/27)
-  - [ ] edit/delete?
   - [ ] like? (or upvote/downvote)
 
 - [ ] Add Map
 
   - [ ] google api for latlng
-  - [ ] add to view
+  - [x] add to view (7/30)
   - [ ] search feature within map?
 
 - [ ] Info Security
@@ -43,6 +42,7 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
   - [ ] Trip Edit
   - [x] Profile Page (7/26)
   - [ ] Message Board
+  - [ ] Map
 
 - [ ] Content
 
