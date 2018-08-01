@@ -3,10 +3,10 @@ const router = express.Router()
 const Trip = require('../models/Trip')
 const bcrypt = require('bcrypt-nodejs')
 
-// show a single trip
+// show a single trip with boolean for whether user is registered for trip or not
 router.get('/show/:id', (req, res) => {
   Trip.findOne({ _id: req.params.id }).then(trip => {
-    res.render('trips/show', { trip: trip })
+    res.render('trips/show', { trip: trip, attending: isAttending(req, trip) })
   })
 })
 
@@ -156,6 +156,22 @@ function isLoggedIn(req, res, next) {
 function isAdminUser(req, trip) {
   if (req.isAuthenticated() && req.user.id === trip.admin.userid) return true
   else return false
+}
+
+// verify user is already attending the trip
+function isAttending(req, trip) {
+  if (req.isAuthenticated()) {
+    let match = trip.attending.findIndex(person => {
+      return person.userid === req.user.id
+    })
+    if (match >= 0) {
+      return true
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
 }
 
 module.exports = router

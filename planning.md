@@ -30,22 +30,23 @@ Url: https://scotch.io/tutorials/easy-node-authentication-setup-and-local
 * [ ] Style
 
   - [x] Single Trip View (7/26)
-  - [x] Trip Edit
+  - [x] Trip Edit (7/31)
   - [x] Profile Page (7/26)
-  - [ ] Message Board
+  - [x] Message Board (7/31)
 
 * [ ] Content
 
   - [x] Trip Edit (7/31)
   - [x] Home (7/31)
-  - [ ] Passcode Edit
+  - [x] Passcode Edit (7/31)
+  - [ ] Housing Info/Edit
 
 - [ ] Deploy application
 
 ## For Future Releases
 
 - [ ] Activities Section of Trip View
-- [ ] Restyle Trip View per Wireframe
+- [ ] Restyle All Views
 - [ ] Easy Invite to trip?
 - [ ] Add Map
   - [ ] google api for latlng
